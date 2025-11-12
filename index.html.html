@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Greek Myth Proofreading Checklist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #667eea;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header .subtitle {
+            color: #764ba2;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .name-box {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .name-box label {
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .name-box input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border: 3px solid white;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            color: #2d3436;
+        }
+
+        .name-box input:focus {
+            outline: none;
+            border-color: #fdcb6e;
+            box-shadow: 0 0 10px rgba(253, 203, 110, 0.5);
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 6px solid #e17055;
+        }
+
+        .intro-box p {
+            font-size: 1.1em;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        .intro-box strong {
+            color: #d63031;
+        }
+
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .check-item {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 6px solid #667eea;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .check-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .check-item.checked {
+            background: linear-gradient(135deg, #a8e6cf 0%, #56ab91 100%);
+            border-left-color: #2d6a4f;
+        }
+
+        .check-item.checked .check-header h3 {
+            color: #2d6a4f;
+        }
+
+        .check-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .checkbox {
+            width: 35px;
+            height: 35px;
+            border: 3px solid #667eea;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            background: white;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .check-item.checked .checkbox {
+            background: #2d6a4f;
+            border-color: #2d6a4f;
+        }
+
+        .check-header h3 {
+            color: #2d3436;
+            font-size: 1.3em;
+            flex-grow: 1;
+        }
+
+        .check-description {
+            margin-left: 50px;
+            color: #636e72;
+            line-height: 1.6;
+            font-size: 1em;
+        }
+
+        .check-description strong {
+            color: #2d3436;
+        }
+
+        .examples {
+            background: #e8f4f8;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 3px solid #0984e3;
+        }
+
+        .examples strong {
+            color: #0984e3;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .example-text {
+            font-style: italic;
+            color: #2d3436;
+            margin: 3px 0;
+        }
+
+        .structure-section {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 6px solid #e17055;
+        }
+
+        .structure-section h3 {
+            color: #d63031;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .structure-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .structure-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #2d3436;
+            font-size: 1em;
+        }
+
+        .structure-list li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .progress-bar-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .progress-label {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.3);
+            height: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #a8e6cf 0%, #56ab91 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .celebrate {
+            display: none;
+            margin-top: 15px;
+            font-size: 2em;
+            animation: bounce 0.5s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #dfe6e9;
+            color: #636e72;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+            
+            .check-description {
+                margin-left: 0;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ Greek Myth Proofreading Quest 🏛️</h1>
+            <p class="subtitle">Make Your Myth Worthy of Mount Olympus!</p>
+        </div>
+
+        <div class="name-box">
+            <label for="studentName">🏺 Hero's Name (Your Name):</label>
+            <input type="text" id="studentName" placeholder="Type your name here..." autocomplete="off">
+        </div>
+
+        <div class="intro-box">
+            <p><strong>Mission:</strong> Use this checklist to improve your Ancient Greek myth. Click each item when you've checked and improved that part of your writing. Can you complete the quest?</p>
+        </div>
+
+        <div class="checklist">
+            <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-header">
+                    <div class="checkbox"></div>
+                    <h3>⏰ Past Tense Throughout</h3>
+                </div>
+                <div class="check-description">
+                    <strong>Check:</strong> Are all your verbs in the past tense? Your story has already happened!
+                    <div class="examples">
+                        <strong>✅ Good examples:</strong>
+                        <div class="example-text">"Zeus <strong>threw</strong> his thunderbolt..."</div>
+                        <div class="example-text">"The hero <strong>sailed</strong> across the wine-dark sea..."</div>
+                        <div class="example-text">"Medusa <strong>was</strong> a fearsome creature who <strong>lived</strong> in a cave..."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-header">
+                    <div class="checkbox"></div>
+                    <h3>👤 Third Person (He/She/They)</h3>
+                </div>
+                <div class="check-description">
+                    <strong>Check:</strong> Have you written as the storyteller, not as a character? Use he, she, they, the hero, the goddess, etc.
+                    <div class="examples">
+                        <strong>✅ Good examples:</strong>
+                        <div class="example-text">"<strong>Perseus</strong> gripped his shield..."</div>
+                        <div class="example-text">"<strong>She</strong> transformed into a beautiful swan..."</div>
+                        <div class="example-text">"<strong>The warriors</strong> prepared for battle..."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-header">
+                    <div class="checkbox"></div>
+                    <h3>📍 Fronted Adverbials (ISPACE)</h3>
+                </div>
+                <div class="check-description">
+                    <strong>Check:</strong> Have you started some sentences with ISPACE words followed by a comma? This makes your writing flow better!<br>
+                    <strong>ISPACE:</strong> In..., Since..., Place, After..., Cause, Eventually...
+                    <div class="examples">
+                        <strong>✅ Good examples:</strong>
+                        <div class="example-text">"<strong>In the depths of the underworld,</strong> Hades ruled..."</div>
+                        <div class="example-text">"<strong>After many years of travel,</strong> Odysseus returned home..."</div>
+                        <div class="example-text">"<strong>Suddenly,</strong> the ground began to shake..."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-header">
+                    <div class="checkbox"></div>
+                    <h3>✨ Expanded Noun Phrases</h3>
+                </div>
+                <div class="check-description">
+                    <strong>Check:</strong> Have you described your nouns with interesting adjectives? Paint a picture with your words!
+                    <div class="examples">
+                        <strong>✅ Good examples:</strong>
+                        <div class="example-text">"The <strong>mighty, golden-bearded</strong> god..."</div>
+                        <div class="example-text">"A <strong>magnificent, fire-breathing</strong> dragon..."</div>
+                        <div class="example-text">"The <strong>treacherous, storm-tossed</strong> sea..."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-header">
+                    <div class="checkbox"></div>
+                    <h3>👁️ Describing What Characters See</h3>
+                </div>
+                <div class="check-description">
+                    <strong>Check:</strong> Have you described the sights in your myth? Help readers picture the scene!
+                    <div class="examples">
+                        <strong>✅ Good examples:</strong>
+                        <div class="example-text">"The palace gleamed with <strong>polished marble columns</strong>..."</div>
+                        <div class="example-text">"<strong>Dark storm clouds</strong> gathered above the mountain peak..."</div>
+                        <div class="example-text">"The hero saw <strong>glittering treasure piled high</strong> in the cave..."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-header">
+                    <div class="checkbox"></div>
+                    <h3>👂 Describing What Characters Hear</h3>
+                </div>
+                <div class="check-description">
+                    <strong>Check:</strong> Have you included sounds to bring your myth to life?
+                    <div class="examples">
+                        <strong>✅ Good examples:</strong>
+                        <div class="example-text">"The beast's <strong>deafening roar</strong> echoed through the valley..."</div>
+                        <div class="example-text">"She could hear the <strong>gentle lapping of waves</strong> against the shore..."</div>
+                        <div class="example-text">"Thunder <strong>crashed and rumbled</strong> above them..."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-header">
+                    <div class="checkbox"></div>
+                    <h3>💭 Describing How Characters Feel</h3>
+                </div>
+                <div class="check-description">
+                    <strong>Check:</strong> Have you shown your characters' emotions and feelings? This makes readers care about them!
+                    <div class="examples">
+                        <strong>✅ Good examples:</strong>
+                        <div class="example-text">"Perseus felt his <strong>heart pounding with fear</strong>..."</div>
+                        <div class="example-text">"<strong>Filled with rage,</strong> Zeus prepared to strike..."</div>
+                        <div class="example-text">"A wave of <strong>relief washed over</strong> the weary traveller..."</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-header">
+                    <div class="checkbox"></div>
+                    <h3>✏️ Perfect Punctuation</h3>
+                </div>
+                <div class="check-description">
+                    <strong>Check every sentence for:</strong>
+                    <div class="examples">
+                        <strong>The essentials:</strong>
+                        <div class="example-text">✓ Capital letters at the start of sentences and for names</div>
+                        <div class="example-text">✓ Full stops at the end of sentences</div>
+                        <div class="example-text">✓ Commas after fronted adverbials</div>
+                        <div class="example-text">✓ Speech marks for dialogue: "Come with me," said Zeus.</div>
+                        <div class="example-text">✓ Exclamation marks (!) and question marks (?) when needed</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-header">
+                    <div class="checkbox"></div>
+                    <h3>📖 Story Structure</h3>
+                </div>
+                <div class="check-description">
+                    <strong>Check:</strong> Does your myth follow the correct structure?
+                    <div class="structure-section">
+                        <h3>Your myth should have:</h3>
+                        <ul class="structure-list">
+                            <li><strong>Opening:</strong> Introduce the hero/heroine and setting</li>
+                            <li><strong>Build-up:</strong> The problem or quest begins</li>
+                            <li><strong>Climax:</strong> The exciting main event/battle/challenge</li>
+                            <li><strong>Resolution:</strong> How the problem was solved</li>
+                            <li><strong>Ending:</strong> What happened to the characters? What's the moral?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-label">Quest Progress</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">0%</div>
+            </div>
+            <div class="celebrate" id="celebrate">🎉 Quest Complete! Your myth is ready for the gods! 🎉</div>
+        </div>
+
+        <div class="footer">
+            4B Basilisks | British School in Tokyo - Azabudai
+        </div>
+    </div>
+
+    <script>
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+            const checkbox = element.querySelector('.checkbox');
+            
+            if (element.classList.contains('checked')) {
+                checkbox.textContent = '✓';
+            } else {
+                checkbox.textContent = '';
+            }
+            
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = document.querySelectorAll('.check-item').length;
+            const checked = document.querySelectorAll('.check-item.checked').length;
+            const percentage = Math.round((checked / total) * 100);
+            
+            const progressFill = document.getElementById('progressFill');
+            const celebrate = document.getElementById('celebrate');
+            
+            progressFill.style.width = percentage + '%';
+            progressFill.textContent = percentage + '%';
+            
+            if (percentage === 100) {
+                celebrate.style.display = 'block';
+            } else {
+                celebrate.style.display = 'none';
+            }
+        }
+
+        // Initialize progress on load
+        updateProgress();
+    </script>
+</body>
+</html>
